@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)file:///Users/addiebailey/Downloads/class_challenge_hourglass%20(2).html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Class Challenge</title>
+<style>
+  :root {
+    --bg: #101521; --panel: #1b2232; --gold: #d9c28a; --muted: #c4cad6;
+    --freshmen: #c66b62; --sophomores: #d5ad4d; --juniors: #5d9b79; --seniors: #709ed5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; color: #f8f4e9;
+    background: radial-gradient(ellipse at 50% 0%, #2b3043 0%, var(--bg) 58%);
+    font-family: Georgia, "Times New Roman", serif;
+  }
+  main { max-width: 1500px; margin: auto; padding: 3vh 3vw 2vh; }
+  .eyebrow { text-align:center; color:var(--gold); letter-spacing:.28em; font: 600 clamp(.7rem,1vw,1rem) Arial,sans-serif; }
+  h1 { text-align:center; font-size:clamp(2rem,4vw,4rem); letter-spacing:.06em; margin:.25em 0 .15em; font-weight:500; }
+  .subtitle { text-align:center; color:var(--muted); font:clamp(.9rem,1.4vw,1.25rem) Arial,sans-serif; margin:0 0 3vh; }
+  .division { margin: 2.5vh 0 1vh; }
+  .division-title { color:var(--gold); font:700 clamp(.8rem,1.1vw,1rem) Arial,sans-serif; letter-spacing:.22em; text-align:center; margin:0 0 1.2vh; }
+  .grades { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(10px,1.6vw,22px); align-items:stretch; }
+  #middle-grades { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .grade[data-grade="6th Grade"] { --grade-color:#c66b62; }
+  .grade[data-grade="7th Grade"] { --grade-color:#d5ad4d; }
+  .grade[data-grade="8th Grade"] { --grade-color:#5d9b79; }
+  .grade[data-grade="9th Grade"] { --grade-color:#709ed5; }
+  .grade[data-grade="10th Grade"] { --grade-color:#b58bd1; }
+  .grade[data-grade="11th Grade"] { --grade-color:#d58a58; }
+  .grade[data-grade="12th Grade"] { --grade-color:#76b9bd; }
+  .grade { --grade-color: var(--gold); background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.015)); border:1px solid #4b5262; border-radius:18px; padding:clamp(12px,2vw,26px) clamp(8px,1.5vw,20px); text-align:center; box-shadow:0 12px 35px #0003; }
+  .grade[data-grade="Freshmen"] { --grade-color:var(--freshmen); }
+  .grade[data-grade="Sophomores"] { --grade-color:var(--sophomores); }
+  .grade[data-grade="Juniors"] { --grade-color:var(--juniors); }
+  .grade[data-grade="Seniors"] { --grade-color:var(--seniors); }
+  .rank { color:var(--gold); font:700 clamp(.7rem,1vw,1rem) Arial,sans-serif; letter-spacing:.13em; min-height:1.3em; }
+  .grade h2 { font-size:clamp(.85rem,1.7vw,1.55rem); margin:.55em 0 .8em; letter-spacing:.035em; }
+  .hourglass-wrap { width:min(100%,220px); margin:0 auto 1.1em; }
+  .hourglass { width:100%; height:auto; display:block; overflow:visible; filter:drop-shadow(0 7px 10px #0005); }
+  .amount { font-size:clamp(1.1rem,2.3vw,2rem); font-weight:bold; margin:.15em 0; }
+  .goal { color:var(--muted); font:clamp(.72rem,1.1vw,1rem) Arial,sans-serif; }
+  .track { height:7px; border-radius:99px; background:#424858; overflow:hidden; margin:1em 0 .5em; }
+  .track-fill { height:100%; width:0; background:var(--grade-color); transition:width 1.2s ease; }
+  .percent { color:var(--grade-color); font:700 clamp(.75rem,1vw,.95rem) Arial,sans-serif; }
+  footer { display:flex; justify-content:space-between; gap:1em; margin-top:2.5vh; color:#aeb6c5; font:clamp(.65rem,.9vw,.85rem) Arial,sans-serif; }
+  #status { text-align:right; }
+  .error { color:#ffb4a9; }
+  @media(max-width:700px) {
+    main { padding:18px 12px; }
+    .grades, #middle-grades { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    .grade { padding:12px 8px; }
+    .hourglass-wrap { width:min(100%,145px); }
+    footer { flex-direction:column; text-align:center; }
+    #status { text-align:center; }
+  }
+  @media(prefers-reduced-motion:reduce) { .track-fill { transition:none; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">ANNUAL GIVING CAMPAIGN</div>
+  <h1 id="campaign-title">THE CLASS CHALLENGE</h1>
+  <p class="subtitle">Every gift moves your grade closer to victory.</p>
+  <section class="division">
+    <h2 class="division-title">MIDDLE SCHOOL</h2>
+    <div class="grades" id="middle-grades" aria-live="polite"><article class="grade" data-grade="6th Grade" style="--grade-color:#c66b62">
+      <div class="rank">★ IN THE LEAD</div>
+      <h2>6TH GRADE</h2>
+      <div class="hourglass-wrap"><svg class="hourglass" viewBox="0 0 220 300" role="img" aria-label="0 percent of goal">
+    <defs>
+      <clippath id="glass-0"><path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z"></path></clippath>
+      <lineargradient id="glassshine-0" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".25"></stop><stop offset=".25" stop-color="#fff" stop-opacity=".04"></stop><stop offset=".75" stop-color="#fff" stop-opacity=".02"></stop><stop offset="1" stop-color="#fff" stop-opacity=".18"></stop></lineargradient>
+    </defs>
+    <g clip-path="url(#glass-0)">
+      <rect x="48" y="280" width="124" height="2" fill="#c66b62">
+        <animate attributeName="y" from="280" to="280" dur="1.1s" fill="freeze"></animate>
+      </rect>
+      <path d="M107 145 L113 145 L110 180 Z" fill="#c66b62" opacity=".95"></path>
+    </g>
+    <path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z" fill="url(#glassshine-0)" stroke="#d9d4c6" stroke-width="5" stroke-linejoin="round"></path>
+    <path d="M42 20 H178 M42 280 H178" stroke="#d9c28a" stroke-width="8" stroke-linecap="round"></path>
+    <path d="M58 31 V43 M162 31 V43 M58 257 V269 M162 257 V269" stroke="#fff" stroke-opacity=".4" stroke-width="2"></path>
+  </svg></div>
+      <div class="amount">$0</div>
+      <div class="goal">of $5,000 goal</div>
+      <div class="track"><div class="track-fill" style="width:0%"></div></div>
+      <div class="percent">0% OF GOAL</div>
+    </article><article class="grade" data-grade="7th Grade" style="--grade-color:#d5ad4d">
+      <div class="rank">RANK 2</div>
+      <h2>7TH GRADE</h2>
+      <div class="hourglass-wrap"><svg class="hourglass" viewBox="0 0 220 300" role="img" aria-label="0 percent of goal">
+    <defs>
+      <clippath id="glass-1"><path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z"></path></clippath>
+      <lineargradient id="glassshine-1" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".25"></stop><stop offset=".25" stop-color="#fff" stop-opacity=".04"></stop><stop offset=".75" stop-color="#fff" stop-opacity=".02"></stop><stop offset="1" stop-color="#fff" stop-opacity=".18"></stop></lineargradient>
+    </defs>
+    <g clip-path="url(#glass-1)">
+      <rect x="48" y="280" width="124" height="2" fill="#d5ad4d">
+        <animate attributeName="y" from="280" to="280" dur="1.1s" fill="freeze"></animate>
+      </rect>
+      <path d="M107 145 L113 145 L110 180 Z" fill="#d5ad4d" opacity=".95"></path>
+    </g>
+    <path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z" fill="url(#glassshine-1)" stroke="#d9d4c6" stroke-width="5" stroke-linejoin="round"></path>
+    <path d="M42 20 H178 M42 280 H178" stroke="#d9c28a" stroke-width="8" stroke-linecap="round"></path>
+    <path d="M58 31 V43 M162 31 V43 M58 257 V269 M162 257 V269" stroke="#fff" stroke-opacity=".4" stroke-width="2"></path>
+  </svg></div>
+      <div class="amount">$0</div>
+      <div class="goal">of $5,000 goal</div>
+      <div class="track"><div class="track-fill" style="width:0%"></div></div>
+      <div class="percent">0% OF GOAL</div>
+    </article><article class="grade" data-grade="8th Grade" style="--grade-color:#5d9b79">
+      <div class="rank">RANK 3</div>
+      <h2>8TH GRADE</h2>
+      <div class="hourglass-wrap"><svg class="hourglass" viewBox="0 0 220 300" role="img" aria-label="0 percent of goal">
+    <defs>
+      <clippath id="glass-2"><path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z"></path></clippath>
+      <lineargradient id="glassshine-2" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".25"></stop><stop offset=".25" stop-color="#fff" stop-opacity=".04"></stop><stop offset=".75" stop-color="#fff" stop-opacity=".02"></stop><stop offset="1" stop-color="#fff" stop-opacity=".18"></stop></lineargradient>
+    </defs>
+    <g clip-path="url(#glass-2)">
+      <rect x="48" y="280" width="124" height="2" fill="#5d9b79">
+        <animate attributeName="y" from="280" to="280" dur="1.1s" fill="freeze"></animate>
+      </rect>
+      <path d="M107 145 L113 145 L110 180 Z" fill="#5d9b79" opacity=".95"></path>
+    </g>
+    <path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z" fill="url(#glassshine-2)" stroke="#d9d4c6" stroke-width="5" stroke-linejoin="round"></path>
+    <path d="M42 20 H178 M42 280 H178" stroke="#d9c28a" stroke-width="8" stroke-linecap="round"></path>
+    <path d="M58 31 V43 M162 31 V43 M58 257 V269 M162 257 V269" stroke="#fff" stroke-opacity=".4" stroke-width="2"></path>
+  </svg></div>
+      <div class="amount">$0</div>
+      <div class="goal">of $5,000 goal</div>
+      <div class="track"><div class="track-fill" style="width:0%"></div></div>
+      <div class="percent">0% OF GOAL</div>
+    </article></div>
+  </section>
+  <section class="division">
+    <h2 class="division-title">HIGH SCHOOL</h2>
+    <div class="grades" id="high-grades" aria-live="polite"><article class="grade" data-grade="9th Grade" style="--grade-color:#709ed5">
+      <div class="rank">RANK 4</div>
+      <h2>9TH GRADE</h2>
+      <div class="hourglass-wrap"><svg class="hourglass" viewBox="0 0 220 300" role="img" aria-label="0 percent of goal">
+    <defs>
+      <clippath id="glass-3"><path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z"></path></clippath>
+      <lineargradient id="glassshine-3" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".25"></stop><stop offset=".25" stop-color="#fff" stop-opacity=".04"></stop><stop offset=".75" stop-color="#fff" stop-opacity=".02"></stop><stop offset="1" stop-color="#fff" stop-opacity=".18"></stop></lineargradient>
+    </defs>
+    <g clip-path="url(#glass-3)">
+      <rect x="48" y="280" width="124" height="2" fill="#709ed5">
+        <animate attributeName="y" from="280" to="280" dur="1.1s" fill="freeze"></animate>
+      </rect>
+      <path d="M107 145 L113 145 L110 180 Z" fill="#709ed5" opacity=".95"></path>
+    </g>
+    <path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z" fill="url(#glassshine-3)" stroke="#d9d4c6" stroke-width="5" stroke-linejoin="round"></path>
+    <path d="M42 20 H178 M42 280 H178" stroke="#d9c28a" stroke-width="8" stroke-linecap="round"></path>
+    <path d="M58 31 V43 M162 31 V43 M58 257 V269 M162 257 V269" stroke="#fff" stroke-opacity=".4" stroke-width="2"></path>
+  </svg></div>
+      <div class="amount">$0</div>
+      <div class="goal">of $5,000 goal</div>
+      <div class="track"><div class="track-fill" style="width:0%"></div></div>
+      <div class="percent">0% OF GOAL</div>
+    </article><article class="grade" data-grade="10th Grade" style="--grade-color:#b58bd1">
+      <div class="rank">RANK 5</div>
+      <h2>10TH GRADE</h2>
+      <div class="hourglass-wrap"><svg class="hourglass" viewBox="0 0 220 300" role="img" aria-label="0 percent of goal">
+    <defs>
+      <clippath id="glass-4"><path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z"></path></clippath>
+      <lineargradient id="glassshine-4" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".25"></stop><stop offset=".25" stop-color="#fff" stop-opacity=".04"></stop><stop offset=".75" stop-color="#fff" stop-opacity=".02"></stop><stop offset="1" stop-color="#fff" stop-opacity=".18"></stop></lineargradient>
+    </defs>
+    <g clip-path="url(#glass-4)">
+      <rect x="48" y="280" width="124" height="2" fill="#b58bd1">
+        <animate attributeName="y" from="280" to="280" dur="1.1s" fill="freeze"></animate>
+      </rect>
+      <path d="M107 145 L113 145 L110 180 Z" fill="#b58bd1" opacity=".95"></path>
+    </g>
+    <path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z" fill="url(#glassshine-4)" stroke="#d9d4c6" stroke-width="5" stroke-linejoin="round"></path>
+    <path d="M42 20 H178 M42 280 H178" stroke="#d9c28a" stroke-width="8" stroke-linecap="round"></path>
+    <path d="M58 31 V43 M162 31 V43 M58 257 V269 M162 257 V269" stroke="#fff" stroke-opacity=".4" stroke-width="2"></path>
+  </svg></div>
+      <div class="amount">$0</div>
+      <div class="goal">of $5,000 goal</div>
+      <div class="track"><div class="track-fill" style="width:0%"></div></div>
+      <div class="percent">0% OF GOAL</div>
+    </article><article class="grade" data-grade="11th Grade" style="--grade-color:#d58a58">
+      <div class="rank">RANK 6</div>
+      <h2>11TH GRADE</h2>
+      <div class="hourglass-wrap"><svg class="hourglass" viewBox="0 0 220 300" role="img" aria-label="0 percent of goal">
+    <defs>
+      <clippath id="glass-5"><path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z"></path></clippath>
+      <lineargradient id="glassshine-5" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".25"></stop><stop offset=".25" stop-color="#fff" stop-opacity=".04"></stop><stop offset=".75" stop-color="#fff" stop-opacity=".02"></stop><stop offset="1" stop-color="#fff" stop-opacity=".18"></stop></lineargradient>
+    </defs>
+    <g clip-path="url(#glass-5)">
+      <rect x="48" y="280" width="124" height="2" fill="#d58a58">
+        <animate attributeName="y" from="280" to="280" dur="1.1s" fill="freeze"></animate>
+      </rect>
+      <path d="M107 145 L113 145 L110 180 Z" fill="#d58a58" opacity=".95"></path>
+    </g>
+    <path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z" fill="url(#glassshine-5)" stroke="#d9d4c6" stroke-width="5" stroke-linejoin="round"></path>
+    <path d="M42 20 H178 M42 280 H178" stroke="#d9c28a" stroke-width="8" stroke-linecap="round"></path>
+    <path d="M58 31 V43 M162 31 V43 M58 257 V269 M162 257 V269" stroke="#fff" stroke-opacity=".4" stroke-width="2"></path>
+  </svg></div>
+      <div class="amount">$0</div>
+      <div class="goal">of $5,000 goal</div>
+      <div class="track"><div class="track-fill" style="width:0%"></div></div>
+      <div class="percent">0% OF GOAL</div>
+    </article><article class="grade" data-grade="12th Grade" style="--grade-color:#76b9bd">
+      <div class="rank">RANK 7</div>
+      <h2>12TH GRADE</h2>
+      <div class="hourglass-wrap"><svg class="hourglass" viewBox="0 0 220 300" role="img" aria-label="0 percent of goal">
+    <defs>
+      <clippath id="glass-6"><path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z"></path></clippath>
+      <lineargradient id="glassshine-6" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".25"></stop><stop offset=".25" stop-color="#fff" stop-opacity=".04"></stop><stop offset=".75" stop-color="#fff" stop-opacity=".02"></stop><stop offset="1" stop-color="#fff" stop-opacity=".18"></stop></lineargradient>
+    </defs>
+    <g clip-path="url(#glass-6)">
+      <rect x="48" y="280" width="124" height="2" fill="#76b9bd">
+        <animate attributeName="y" from="280" to="280" dur="1.1s" fill="freeze"></animate>
+      </rect>
+      <path d="M107 145 L113 145 L110 180 Z" fill="#76b9bd" opacity=".95"></path>
+    </g>
+    <path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z" fill="url(#glassshine-6)" stroke="#d9d4c6" stroke-width="5" stroke-linejoin="round"></path>
+    <path d="M42 20 H178 M42 280 H178" stroke="#d9c28a" stroke-width="8" stroke-linecap="round"></path>
+    <path d="M58 31 V43 M162 31 V43 M58 257 V269 M162 257 V269" stroke="#fff" stroke-opacity=".4" stroke-width="2"></path>
+  </svg></div>
+      <div class="amount">$0</div>
+      <div class="goal">of $5,000 goal</div>
+      <div class="track"><div class="track-fill" style="width:0%"></div></div>
+      <div class="percent">0% OF GOAL</div>
+    </article></div>
+  </section>
+  <footer><span>Give together. Rise together.</span><span id="status">Demo mode — add your published CSV URL in the file.</span></footer>
+</main>
+<script>
+/*
+ SETUP:
+ 1. Publish the grade totals sheet from Google Sheets as CSV.
+ 2. Paste the published CSV URL between the quotes below.
+ 3. Save and publish this file using GitHub Pages.
+ Expected CSV columns: Grade, Total Raised, Goal
+ Use these exact grade names: 6th Grade, 7th Grade, 8th Grade, 9th Grade, 10th Grade, 11th Grade, 12th Grade.
+*/
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR9zrHK8c0wDW79h3RcGM5ppfe1FOcCpxaxPUXkqMehwxm2N_rFfKHIdLBJThyn2P27PEPoxPTzm0F9/pub?output=csv";
+const REFRESH_MS = 60000; // check for updates every 60 seconds
+const CAMPAIGN_TITLE = "THE CLASS CHALLENGE";
+const DEFAULT_GRADES = [
+  { Grade: "6th Grade", "Total Raised": 0, Goal: 5000 },
+  { Grade: "7th Grade", "Total Raised": 0, Goal: 5000 },
+  { Grade: "8th Grade", "Total Raised": 0, Goal: 5000 },
+  { Grade: "9th Grade", "Total Raised": 0, Goal: 5000 },
+  { Grade: "10th Grade", "Total Raised": 0, Goal: 5000 },
+  { Grade: "11th Grade", "Total Raised": 0, Goal: 5000 },
+  { Grade: "12th Grade", "Total Raised": 0, Goal: 5000 }
+];
+document.getElementById("campaign-title").textContent = CAMPAIGN_TITLE;
+
+function parseCSV(text) {
+  const rows = [];
+  let row = [], cell = "", quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i], next = text[i + 1];
+    if (c === '"' && quoted && next === '"') { cell += '"'; i++; }
+    else if (c === '"') quoted = !quoted;
+    else if (c === "," && !quoted) { row.push(cell.trim()); cell = ""; }
+    else if ((c === "\n" || c === "\r") && !quoted) {
+      if (c === "\r" && next === "\n") i++;
+      row.push(cell.trim()); cell = "";
+      if (row.some(v => v !== "")) rows.push(row);
+      row = [];
+    } else cell += c;
+  }
+  if (cell.length || row.length) { row.push(cell.trim()); rows.push(row); }
+  if (rows.length < 2) throw new Error("No grade rows found in the published CSV.");
+  const headers = rows[0].map(h => h.toLowerCase().replace(/^\ufeff/, "").trim());
+  const find = names => headers.findIndex(h => names.includes(h));
+  const gradeI = find(["grade", "class", "year"]);
+  const totalI = find(["total raised", "total", "amount raised", "raised"]);
+  const goalI = find(["goal", "target"]);
+  if (gradeI < 0 || totalI < 0 || goalI < 0) {
+    throw new Error('CSV needs columns named "Grade", "Total Raised", and "Goal".');
+  }
+  return rows.slice(1).map(r => ({
+    Grade: r[gradeI],
+    "Total Raised": Number(String(r[totalI] || "0").replace(/[$,\s]/g, "")) || 0,
+    Goal: Number(String(r[goalI] || "0").replace(/[$,\s]/g, "")) || 0
+  })).filter(r => r.Grade);
+}
+function money(n) {
+  return new Intl.NumberFormat("en-US", { style:"currency", currency:"USD", maximumFractionDigits:0 }).format(n);
+}
+function escapeHTML(s) {
+  return String(s).replace(/[&<>"']/g, ch => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[ch]));
+}
+function hourglassSVG(pct, color, id) {
+  const p = Math.max(0, Math.min(100, pct));
+  // Sand rises from the bottom bowl; clip paths keep it inside the hourglass silhouette.
+  return `<svg class="hourglass" viewBox="0 0 220 300" role="img" aria-label="${Math.round(p)} percent of goal">
+    <defs>
+      <clipPath id="glass-${id}"><path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z"/></clipPath>
+      <linearGradient id="glassshine-${id}" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".25"/><stop offset=".25" stop-color="#fff" stop-opacity=".04"/><stop offset=".75" stop-color="#fff" stop-opacity=".02"/><stop offset="1" stop-color="#fff" stop-opacity=".18"/></linearGradient>
+    </defs>
+    <g clip-path="url(#glass-${id})">
+      <rect x="48" y="${280 - 260*p/100}" width="124" height="${260*p/100 + 2}" fill="${color}">
+        <animate attributeName="y" from="280" to="${280 - 260*p/100}" dur="1.1s" fill="freeze"/>
+      </rect>
+      <path d="M107 145 L113 145 L110 180 Z" fill="${color}" opacity=".95"/>
+    </g>
+    <path d="M48 20 L172 20 L172 42 C172 91 140 116 119 140 C108 152 108 157 119 169 C140 193 172 218 172 258 L172 280 L48 280 L48 258 C48 218 80 193 101 169 C112 157 112 152 101 140 C80 116 48 91 48 42 Z" fill="url(#glassshine-${id})" stroke="#d9d4c6" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M42 20 H178 M42 280 H178" stroke="#d9c28a" stroke-width="8" stroke-linecap="round"/>
+    <path d="M58 31 V43 M162 31 V43 M58 257 V269 M162 257 V269" stroke="#fff" stroke-opacity=".4" stroke-width="2"/>
+  </svg>`;
+}
+function render(data) {
+  const maxTotal = Math.max(1, ...data.map(d => Number(d["Total Raised"]) || 0));
+  const sorted = [...data].sort((a,b) => (Number(b["Total Raised"])||0) - (Number(a["Total Raised"])||0));
+  const rank = new Map(sorted.map((d,i) => [d.Grade, i+1]));
+  const colors = {
+    "6th Grade":"#c66b62", "7th Grade":"#d5ad4d", "8th Grade":"#5d9b79",
+    "9th Grade":"#709ed5", "10th Grade":"#b58bd1", "11th Grade":"#d58a58", "12th Grade":"#76b9bd"
+  };
+  const cardHTML = d => {
+    const i = data.indexOf(d);
+    const total = Math.max(0, Number(d["Total Raised"]) || 0);
+    const goal = Math.max(0, Number(d.Goal) || 0);
+    const pct = goal > 0 ? Math.min(100, total / goal * 100) : (total > 0 ? total/maxTotal*100 : 0);
+    const color = colors[d.Grade] || ["#c66b62","#d5ad4d","#5d9b79","#709ed5","#b58bd1","#d58a58","#76b9bd"][i%7];
+    const place = rank.get(d.Grade);
+    return `<article class="grade" data-grade="${escapeHTML(d.Grade)}" style="--grade-color:${color}">
+      <div class="rank">${place === 1 ? "★ IN THE LEAD" : `RANK ${place}`}</div>
+      <h2>${escapeHTML(d.Grade).toUpperCase()}</h2>
+      <div class="hourglass-wrap">${hourglassSVG(pct,color,i)}</div>
+      <div class="amount">${money(total)}</div>
+      <div class="goal">${goal ? `of ${money(goal)} goal` : "Goal not set"}</div>
+      <div class="track"><div class="track-fill" style="width:${pct}%"></div></div>
+      <div class="percent">${Math.round(pct)}% OF GOAL</div>
+    </article>`;
+  };
+  const middleNames = new Set(["6th Grade", "7th Grade", "8th Grade"]);
+  document.getElementById("middle-grades").innerHTML = data.filter(d => middleNames.has(d.Grade)).map(cardHTML).join("");
+  document.getElementById("high-grades").innerHTML = data.filter(d => !middleNames.has(d.Grade)).map(cardHTML).join("");
+}
+async function update() {
+  if (!CSV_URL.startsWith("https://")) {
+    render(DEFAULT_GRADES);
+    document.getElementById("status").textContent = "Demo mode — add your published CSV URL in the file.";
+    return;
+  }
+  try {
+    const response = await fetch(CSV_URL + (CSV_URL.includes("?") ? "&" : "?") + "t=" + Date.now(), { cache:"no-store" });
+    if (!response.ok) throw new Error("Could not load the published spreadsheet.");
+    const data = parseCSV(await response.text());
+    render(data);
+    document.getElementById("status").textContent = "Live data • Last checked " + new Date().toLocaleTimeString([], {hour:"numeric",minute:"2-digit"});
+  } catch (e) {
+    document.getElementById("status").textContent = "Could not refresh data — check the published CSV link.";
+    document.getElementById("status").classList.add("error");
+    console.error(e);
+  }
+}
+update();
+setInterval(update, REFRESH_MS);
+</script>
+
+
+</body></html>
